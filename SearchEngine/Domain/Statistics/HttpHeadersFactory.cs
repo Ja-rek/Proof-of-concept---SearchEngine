@@ -6,7 +6,7 @@ namespace Aveneo.SearchEngine.Domai.Statisticsn
 {
     internal class HttpHeadersFactory
     {
-        public IEnumerable<HttpHeader> HttpHeaders(Dictionary<string, string> headers)
+        public static IEnumerable<HttpHeader> HttpHeaders(IDictionary<string, string> headers)
         {
             return headers.Select(x => new HttpHeader(x.Key, x.Value));
         }

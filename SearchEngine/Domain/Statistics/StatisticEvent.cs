@@ -1,18 +1,19 @@
-using System;
+using System.Collections.Generic;
+using Aveneo.SearchEngine.Common;
 
-namespace Aveneo.SearchEngine.Domain.Companies
+namespace Aveneo.SearchEngine.Domain.Statistics
 {
-    internal abstract class StatisticEvent<TWantedValue>
+    internal abstract class StatisticEvent
     {
-        public StatisticEvent(TWantedValue wantedValue, string headers, DateTime date)
+        public StatisticEvent(string predicate, Status status, IEnumerable<HttpHeader> headers)
         {
-            WantedValue = wantedValue;
+            Predicate = predicate;
+            Status = status;
             Headers = headers;
-            Date = date;
         }
 
-        public TWantedValue WantedValue { get; }
-        public string Headers { get; }
-        public DateTime Date { get; }
+        public string Predicate { get; }
+        public Status Status { get; }
+        public IEnumerable<HttpHeader> Headers { get; }
     }
 }
