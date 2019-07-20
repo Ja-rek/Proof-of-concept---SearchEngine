@@ -3,6 +3,7 @@ using Aveneo.Common.Domain.Events;
 using Aveneo.SearchEngine.Domain.Companies;
 using Aveneo.SearchEngine.Domain.Statistics;
 using Aveneo.SearchEngine.Infrastructure.DataModel;
+using Newtonsoft.Json;
 using NHibernate;
 
 namespace Aveneo.SearchEngine.Infrastructure.CompanyStores
@@ -19,7 +20,8 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyStores
 
         public void Store(TCompanyStatisticEvent @event)
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<TCompanyStatisticEvent, CompanyStatisticData>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<TCompanyStatisticEvent, CompanyStatisticData>()
+                .ForMember(dest => dest.Headers, opt => opt.MapFrom(src => JsonConvert.SerializeObject(src.Headers))));
 
             var companyStatisticData = config.CreateMapper().Map<CompanyStatisticData>(@event);
 
