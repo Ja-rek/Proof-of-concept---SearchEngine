@@ -28,7 +28,7 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries
                 strategy.WhereValueExist(ref query, predicate);
             }
 
-            query.JoinQueryOver(x => x.Adress, JoinType.LeftOuterJoin);
+            query.JoinQueryOver(x => x.Address, JoinType.LeftOuterJoin);
 
             var companyData = query.SingleOrDefault();
 
@@ -36,10 +36,10 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries
 
             return new CompanyResult(companyData.Id, 
                 companyData.Name, 
-                companyData.Adress.Street, 
-                companyData.Adress.SuiteOrApartament,
-                companyData.Adress.PostCode,
-                companyData.Adress.City);
+                companyData.Address.Street, 
+                companyData.Address.SuiteOrApartament,
+                companyData.Address.PostCode,
+                companyData.Address.City);
         }
     }
 }

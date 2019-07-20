@@ -2,7 +2,7 @@ using AutoMapper;
 using Aveneo.Common.Domain.Events;
 using Aveneo.SearchEngine.Domain.Companies;
 using Aveneo.SearchEngine.Domain.Statistics;
-using Aveneo.SearchEngine.Infrastructure.Data;
+using Aveneo.SearchEngine.Infrastructure.DataModel;
 using NHibernate;
 
 namespace Aveneo.SearchEngine.Infrastructure.CompanyStores
