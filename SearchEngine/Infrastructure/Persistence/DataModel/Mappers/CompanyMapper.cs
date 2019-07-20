@@ -2,7 +2,7 @@
 
 namespace Aveneo.SearchEngine.Infrastructure.DataModel.Mapping
 {
-    class CompanyMapper : ClassMap<CompanyData>
+    public class CompanyMapper : ClassMap<CompanyData>
     {
         public CompanyMapper()
         {
@@ -11,7 +11,7 @@ namespace Aveneo.SearchEngine.Infrastructure.DataModel.Mapping
             Map(x => x.Ksr).Length(10).Index("KSR");
             Map(x => x.Nip).Length(10).Index("NIP");
             Map(x => x.Regon).Length(9).Index("REGON");
-            References(x => x.Address);
+            References(x => x.Address).Cascade.All();
         }
     }
 }

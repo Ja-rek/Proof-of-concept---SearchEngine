@@ -1,6 +1,6 @@
 namespace Aveneo.SearchEngine.Common
 {
-    internal enum Status
+    public enum Status
     {
         Found,
         NotFound,

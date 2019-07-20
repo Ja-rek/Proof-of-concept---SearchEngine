@@ -1,6 +1,6 @@
 namespace Aveneo.SearchEngine.Infrastructure.DataModel
 {
-    internal class AddressData
+    public class AddressData
     {
         public virtual int Id { get; set; } 
         public virtual string Street { get; set; }

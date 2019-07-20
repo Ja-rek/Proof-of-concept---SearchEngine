@@ -2,7 +2,7 @@
 
 namespace Aveneo.SearchEngine.Infrastructure.DataModel.Mapping
 {
-    class CompanyStatisticMapper : ClassMap<CompanyStatisticData>
+    public class CompanyStatisticMapper : ClassMap<CompanyStatisticData>
     {
         public CompanyStatisticMapper()
         {

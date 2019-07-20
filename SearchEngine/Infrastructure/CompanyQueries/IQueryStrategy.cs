@@ -5,6 +5,6 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries
 {
     internal interface IQueryStrategy
     {
-        void WhereValueExist(ref IQueryOver<CompanyData, CompanyData> query, int predicate);
+        void WhereValueExist(ref IQueryOver<CompanyData, CompanyData> query, long predicate);
     }
 }

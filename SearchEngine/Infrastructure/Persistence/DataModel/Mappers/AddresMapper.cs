@@ -2,7 +2,7 @@
 
 namespace Aveneo.SearchEngine.Infrastructure.DataModel.Mapping
 {
-    class AddressMapper : ClassMap<AddressData>
+    public class AddressMapper : ClassMap<AddressData>
     {
         public AddressMapper()
         {

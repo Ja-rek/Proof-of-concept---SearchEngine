@@ -5,7 +5,7 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries.QueryStrategy
 {
     internal class NipOrKsrQueryStrategy : IQueryStrategy
     {
-        public void WhereValueExist(ref IQueryOver<CompanyData, CompanyData> query, int predicate)
+        public void WhereValueExist(ref IQueryOver<CompanyData, CompanyData> query, long predicate)
         {
             if (predicate == 10)
             {

@@ -19,7 +19,7 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries
             this.strategies = strategies;
         }
 
-        public Maybe<CompanyResult> GetCompanyByPredicate(int predicate)
+        public Maybe<CompanyResult> GetCompanyByPredicate(long predicate)
         {
             var query = this.session.QueryOver<CompanyData>();
 

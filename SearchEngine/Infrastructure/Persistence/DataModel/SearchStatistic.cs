@@ -3,7 +3,7 @@ using Aveneo.SearchEngine.Common;
 
 namespace Aveneo.SearchEngine.Infrastructure.DataModel
 {
-    internal abstract class SearchStatisticData
+    public abstract class SearchStatisticData
     {
         public virtual int Id { get; set; }
         public virtual string Predicate { get; set; }
