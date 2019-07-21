@@ -1,7 +1,9 @@
 using System.Linq;
 using System.Reflection;
 using Autofac;
+using Aveneo.Common.Domain.Events;
 using Aveneo.SearchEngine.Application.Companies;
+using Aveneo.SearchEngine.Application.CompanyEventHandlers;
 using Aveneo.SearchEngine.Infrastructure.CompanyQueries;
 using Aveneo.SearchEngine.Infrastructure.CompanyStores;
 
@@ -13,6 +15,7 @@ namespace Aveneo.SearchEngine.Infrastructure.ContenerIOC
         {
             builder.RegisterType<CompanyQueryService>().AsImplementedInterfaces();
             builder.RegisterGeneric(typeof(CompanyStatisticEventStore<>)).AsImplementedInterfaces();
+            builder.RegisterGeneric(typeof(CompanyStatisticEventStoreHandler<>)).As(typeof(IHandleEvent<>));
 
             var type = typeof(IQueryStrategy);
 
