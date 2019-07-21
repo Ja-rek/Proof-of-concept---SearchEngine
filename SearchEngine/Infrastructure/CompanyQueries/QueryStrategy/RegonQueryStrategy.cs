@@ -14,7 +14,7 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries.QueryStrategy
 
         public Expression<Func<CompanyData, bool>> WhereCriteria(long predicate)
         {
-            return x => x.Ksr == predicate;
+            return x => x.Regon == predicate;
         }
     }
 }
