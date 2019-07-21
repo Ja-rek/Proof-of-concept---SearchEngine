@@ -16,7 +16,7 @@ namespace Aveneo.SearchEngine.UnitTests.Domain.Companies
         }
 
         [Test]
-        [TestCase("123-46-32-128"), TestCase("pl13-456-32-18"), TestCase("p 123-456-32-18")]
+        [TestCase("123-456-32-128"), TestCase("pl13-456-32-18"), TestCase("p 123-456-32-18")]
         [TestCase("563218"), TestCase("1234563218955"), TestCase("pl")]
         public void Valid_WhenValueIsNotValid_ThenReturnsFalse(string value)
         {
