@@ -1,13 +1,20 @@
+using System;
+using System.Linq.Expressions;
 using Aveneo.SearchEngine.Infrastructure.DataModel;
-using NHibernate;
 
 namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries.QueryStrategy
 {
-    internal class RegonOrKsrQueryStrategy : IQueryStrategy
+    public class RegonQueryStrategy : IQueryStrategy
     {
-        public void WhereValueExist(ref IQueryOver<CompanyData, CompanyData> query, long predicate)
+
+        public bool IsCorrectNumber(long predicate)
         {
-            if (predicate == 9) query.Where(x => x.Regon == predicate);
+            return Math.Ceiling(Math.Log10(predicate)) == 9;
+        }
+
+        public Expression<Func<CompanyData, bool>> WhereCriteria(long predicate)
+        {
+            return x => x.Ksr == predicate;
         }
     }
 }

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using NHibernate;
-using Aveneo.SearchEngine.Application.Companies;
-using Aveneo.SearchEngine.Infrastructure.DataModel;
 using Monads;
 using static Monads.MaybeFactory;
 using NHibernate.SqlCommand;
+using Aveneo.SearchEngine.Application.Companies;
+using Aveneo.SearchEngine.Infrastructure.DataModel;
 
 namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries
 {
@@ -21,25 +21,28 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries
 
         public Maybe<CompanyResult> GetCompanyByPredicate(long predicate)
         {
-            var query = this.session.QueryOver<CompanyData>();
-
             foreach (var strategy in this.strategies)
             {
-                strategy.WhereValueExist(ref query, predicate);
+                if (strategy.IsCorrectNumber(predicate))
+                {
+                    var companyData = this.session.QueryOver<CompanyData>()
+                        .Where(strategy.WhereCriteria(predicate))
+                        .JoinQueryOver(x => x.Address, JoinType.LeftOuterJoin)
+                        .SingleOrDefault();
+
+                    if (companyData != null)
+                    {
+                        return new CompanyResult(companyData.Id, 
+                            companyData.Name, 
+                            companyData.Address.Street, 
+                            companyData.Address.SuiteOrApartament,
+                            companyData.Address.PostCode,
+                            companyData.Address.City);
+                    }
+                }
             }
 
-            query.JoinQueryOver(x => x.Address, JoinType.LeftOuterJoin);
-
-            var companyData = query.SingleOrDefault();
-
-            if (companyData == null) return Nothing;
-
-            return new CompanyResult(companyData.Id, 
-                companyData.Name, 
-                companyData.Address.Street, 
-                companyData.Address.SuiteOrApartament,
-                companyData.Address.PostCode,
-                companyData.Address.City);
+            return Nothing;
         }
     }
 }

@@ -1,10 +1,12 @@
+using System;
+using System.Linq.Expressions;
 using Aveneo.SearchEngine.Infrastructure.DataModel;
-using NHibernate;
 
 namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries
 {
-    internal interface IQueryStrategy
+    public interface IQueryStrategy
     {
-        void WhereValueExist(ref IQueryOver<CompanyData, CompanyData> query, long predicate);
+        bool IsCorrectNumber(long predicate);
+        Expression<Func<CompanyData, bool>> WhereCriteria(long predicate);
     }
 }
