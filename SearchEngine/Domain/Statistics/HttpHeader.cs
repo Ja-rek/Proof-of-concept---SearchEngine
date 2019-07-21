@@ -2,7 +2,7 @@ using static Suckless.Asserts.Assertions;
 
 namespace Aveneo.SearchEngine.Domain.Statistics
 {
-    internal class HttpHeader
+    public class HttpHeader
     {
         public HttpHeader(string name, string value)
         {

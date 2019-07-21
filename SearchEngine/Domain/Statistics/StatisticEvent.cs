@@ -3,7 +3,7 @@ using Aveneo.SearchEngine.Common;
 
 namespace Aveneo.SearchEngine.Domain.Statistics
 {
-    internal abstract class StatisticEvent
+    public abstract class StatisticEvent
     {
         public StatisticEvent(string predicate, Status status, IEnumerable<HttpHeader> headers)
         {
