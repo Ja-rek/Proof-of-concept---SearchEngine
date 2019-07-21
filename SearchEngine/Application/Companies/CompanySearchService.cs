@@ -1,12 +1,12 @@
 using Aveneo.Common.Domain.Events;
-using Aveneo.SearchEngine.Domai.Statisticsn;
+using Aveneo.SearchEngine.Domain.Statisticsn;
 using Aveneo.SearchEngine.Domain.Companies;
 using Monads;
 using static Monads.MaybeFactory;
 
 namespace Aveneo.SearchEngine.Application.Companies
 {
-    internal class CompanySearchService
+    public class CompanySearchService
     {
         private readonly ICompanyService companyService;
         private readonly EventPublisher publisher;

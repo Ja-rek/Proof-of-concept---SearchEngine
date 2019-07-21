@@ -7,7 +7,7 @@ namespace Aveneo.SearchEngine.Domain.Companies
 {
     internal class FoundCompanyEvent : StatisticEvent, IEvent
     {
-        public FoundCompanyEvent(int predicate, int companyId, IEnumerable<HttpHeader> headers) 
+        public FoundCompanyEvent(long predicate, int companyId, IEnumerable<HttpHeader> headers) 
             : base(predicate.ToString(), Status.Found, headers)
         {
             CompanyId = companyId;

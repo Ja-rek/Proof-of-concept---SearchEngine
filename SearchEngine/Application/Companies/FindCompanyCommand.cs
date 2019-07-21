@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Aveneo.SearchEngine.Application.Companies
 {
-    internal class FindCompanyCommand
+    public class FindCompanyCommand
     {
         public FindCompanyCommand(string filterPredicate, IDictionary<string, string> headers)
         {
