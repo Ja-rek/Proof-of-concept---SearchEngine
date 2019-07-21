@@ -9,6 +9,6 @@ namespace Aveneo.SearchEngine.Infrastructure.DataModel
         public virtual string Predicate { get; set; }
         public virtual Status Status { get; set; }
         public virtual string Headers { get; set; }
-        public virtual DateTime Date { get; set; }
+        public virtual DateTime Date { get; set; } = DateTime.Now;
     }
 }

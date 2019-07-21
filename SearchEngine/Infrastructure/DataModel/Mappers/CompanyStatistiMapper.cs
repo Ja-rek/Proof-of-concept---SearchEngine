@@ -7,8 +7,8 @@ namespace Aveneo.SearchEngine.Infrastructure.DataModel.Mapping
         public CompanyStatisticMapper()
         {
             Id(x => x.Id);
-            Map(x => x.Headers);
-            Map(x => x.Predicate);
+            Map(x => x.Headers).CustomSqlType("TEXT");
+            Map(x => x.Predicate).CustomSqlType("TEXT");
             Map(x => x.Status);
             Map(x => x.CompanyId);
             Map(x => x.Date);
