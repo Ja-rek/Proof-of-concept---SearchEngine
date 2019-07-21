@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using AutoFixture;
 using Aveneo.Common.Infrastructure.Persistence;
 using Aveneo.SearchEngine.Infrastructure.DataModel;
@@ -12,50 +13,33 @@ namespace DatabaseSeed
         {
             var fixture = new Fixture();
 
-            var companies = new CompanyData[] 
+            var numbers = new (long Nip, long Ksr, int Regon)[]
             {
-                new CompanyData 
-                { 
-                    Nip = 1234567890, 
-                    Ksr = 2234567890, 
-                    Regon = 323456789, 
-                    Name = fixture.Create<string>(),
-                    Address = fixture.Build<AddressData>().Without(x => x.Id).With(x => x.PostCode, 12345).Create()
-                },
-                new CompanyData 
-                { 
-                    Nip = 5234567890, 
-                    Ksr = 6234567890, 
-                    Regon = 723456789, 
-                    Name = fixture.Create<string>(),
-                    Address = fixture.Build<AddressData>().Without(x => x.Id).With(x => x.PostCode, 12345).Create()
-                },
-                new CompanyData 
-                { 
-                    Nip = 5234567890, 
-                    Ksr = 6234567890, 
-                    Regon = 723456789, 
-                    Name = fixture.Create<string>(),
-                    Address = fixture.Build<AddressData>().Without(x => x.Id).With(x => x.PostCode, 12345).Create()
-                },
-                new CompanyData 
-                { 
-                    Nip = 8234567890, 
-                    Ksr = 9234567890, 
-                    Regon = 993456789, 
-                    Name = fixture.Create<string>(),
-                    Address = fixture.Build<AddressData>().Without(x => x.Id).With(x => x.PostCode, 12345).Create()
-                },
+                (1000000000, 2000000000, 300000000),
+                (4000000000, 4000000000, 600000000),
+                (7000000000, 8000000009, 900000000),
             };
+
+            var companies = new Collection<CompanyData>();
 
             using(var session = SessionFactory.Session(m => 
                     m.FluentMappings.AddFromAssemblyOf<CompanyData>(), createDb: true))
-
             using(var transaction = session.BeginTransaction())
             {
-                foreach (var company in companies)
+                foreach (var number in numbers)
                 {
+                    var company =new CompanyData 
+                    { 
+                        Nip = number.Nip, 
+                        Ksr = number.Ksr, 
+                        Regon = number.Regon, 
+                        Name = fixture.Create<string>(),
+                        Address = fixture.Build<AddressData>().Without(x => x.Id).With(x => x.PostCode, 12345).Create()
+                    };
+                                         
                     session.Save(company);
+
+                    companies.Add(company);
                 }
 
                 transaction.Commit();
