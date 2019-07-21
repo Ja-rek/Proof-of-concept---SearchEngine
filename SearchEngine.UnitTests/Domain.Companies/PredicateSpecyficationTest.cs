@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Aveneo.SearchEngine.UnitTests.Domain.Companies
 {
-    internal class FilterPredicateSpecyficationTest
+    internal class PredicateSpecyficationTest
     {
         [Test]
         [TestCase("123-456-32-18"), TestCase("pl123-456-32-18"), TestCase("pl 123-456-32-18")]
