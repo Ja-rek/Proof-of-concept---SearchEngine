@@ -7,8 +7,8 @@ namespace Aveneo.SearchEngine.Domain.Companies
 {
     public class InvalidCompanyPredicateEvent : StatisticEvent, IEvent
     {
-        public InvalidCompanyPredicateEvent(string filterPredicate, IEnumerable<HttpHeader> headers) 
-            : base(filterPredicate, Status.InvalidPredicate, headers)
+        public InvalidCompanyPredicateEvent(string numberToSearch, IEnumerable<HttpHeader> headers) 
+            : base(numberToSearch, Status.InvalidPredicate, headers)
         {
         }
     }

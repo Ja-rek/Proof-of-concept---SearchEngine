@@ -12,7 +12,7 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries.QueryStrategy
             return Math.Ceiling(Math.Log10(predicate)) == 9;
         }
 
-        public Expression<Func<CompanyData, bool>> WhereCriteria(long predicate)
+        public Expression<Func<CompanyData, bool>> WherePredicate(long predicate)
         {
             return x => x.Regon == predicate;
         }

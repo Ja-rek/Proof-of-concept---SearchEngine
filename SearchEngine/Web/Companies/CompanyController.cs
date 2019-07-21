@@ -15,12 +15,12 @@ namespace Aveneo.SearchEngine.Web.Companies
             this.service = service;
         }
 
-        [HttpGet("{predicate}")]
-        public ActionResult<CompanyResource> Get(string predicate)
+        [HttpGet("{valueToSearch}")]
+        public ActionResult<CompanyResource> Get(string valueToSearch)
         {
             var headers = HeadersFactory.Headers(Request);
 
-            var maybeCompany= this.service.FindCompany(new FindCompanyCommand(predicate, headers));
+            var maybeCompany= this.service.FindCompany(new FindCompanyCommand(valueToSearch, headers));
 
             if (maybeCompany.HasValue()) return new CompanyResource(maybeCompany.Value());
 

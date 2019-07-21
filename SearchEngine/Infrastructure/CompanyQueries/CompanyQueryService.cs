@@ -19,14 +19,14 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries
             this.strategies = strategies;
         }
 
-        public Maybe<CompanyResult> GetCompanyByPredicate(long predicate)
+        public Maybe<CompanyResult> GetCompanyByPredicateOf(long numberToSearch)
         {
             foreach (var strategy in this.strategies)
             {
-                if (strategy.IsCorrectNumber(predicate))
+                if (strategy.IsCorrectNumber(numberToSearch))
                 {
                     var companyData = this.session.QueryOver<CompanyData>()
-                        .Where(strategy.WhereCriteria(predicate))
+                        .Where(strategy.WherePredicate(numberToSearch))
                         .JoinQueryOver(x => x.Address, JoinType.LeftOuterJoin)
                         .SingleOrDefault();
 

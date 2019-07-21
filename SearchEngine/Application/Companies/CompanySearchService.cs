@@ -21,20 +21,20 @@ namespace Aveneo.SearchEngine.Application.Companies
         {
             var headers = HttpHeadersFactory.HttpHeaders(command.Headers);
 
-            if (PredicateSpecyfication.Valid(command.Predicate))
+            if (NumberToSearchSpecyfication.Valid(command.NumberToSearch))
             {
-                var predicate = PredicateCorrector.Correct(command.Predicate);
+                var numberToSearch = NumberToSearchCorrector.Correct(command.NumberToSearch);
 
-                var maybeCompany = this.companyService.GetCompanyByPredicate(predicate);
+                var maybeCompany = this.companyService.GetCompanyByPredicateOf(numberToSearch);
 
                 maybeCompany.Do(
-                    just: company => this.publisher.Publish(new FoundCompanyEvent(predicate, company.Id, headers)),
-                    nothing:() => this.publisher.Publish(new NotFonudCompanyEvent(predicate, headers)));;
+                    just: company => this.publisher.Publish(new FoundCompanyEvent(numberToSearch, company.Id, headers)),
+                    nothing:() => this.publisher.Publish(new NotFonudCompanyEvent(numberToSearch, headers)));;
 
                 return maybeCompany;
             }
 
-            this.publisher.Publish(new InvalidCompanyPredicateEvent(command.Predicate, headers));
+            this.publisher.Publish(new InvalidCompanyPredicateEvent(command.NumberToSearch, headers));
 
             return Nothing;
         }

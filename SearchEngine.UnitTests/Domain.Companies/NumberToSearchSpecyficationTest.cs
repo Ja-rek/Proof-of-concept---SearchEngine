@@ -10,7 +10,7 @@ namespace Aveneo.SearchEngine.UnitTests.Domain.Companies
         [TestCase("1234563218"), TestCase("123456321")]
         public void Valid_WhenValueIsValid_ThenReturnsTrue(string value)
         {
-            var isCorrect = PredicateSpecyfication.Valid(value);
+            var isCorrect = NumberToSearchSpecyfication.Valid(value);
 
             Assert.True(isCorrect);
         }
@@ -20,7 +20,7 @@ namespace Aveneo.SearchEngine.UnitTests.Domain.Companies
         [TestCase("563218"), TestCase("1234563218955"), TestCase("pl")]
         public void Valid_WhenValueIsNotValid_ThenReturnsFalse(string value)
         {
-            var isCorrect = PredicateSpecyfication.Valid(value);
+            var isCorrect = NumberToSearchSpecyfication.Valid(value);
 
             Assert.False(isCorrect);
         }

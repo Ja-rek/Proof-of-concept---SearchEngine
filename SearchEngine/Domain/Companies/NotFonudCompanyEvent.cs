@@ -7,8 +7,8 @@ namespace Aveneo.SearchEngine.Domain.Companies
 {
     public class NotFonudCompanyEvent : StatisticEvent, IEvent
     {
-        public NotFonudCompanyEvent(long predicate, IEnumerable<HttpHeader> headers) 
-            : base(predicate.ToString(), Status.NotFound, headers)
+        public NotFonudCompanyEvent(long numberToSearch, IEnumerable<HttpHeader> headers) 
+            : base(numberToSearch.ToString(), Status.NotFound, headers)
         {
         }
     }

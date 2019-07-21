@@ -5,14 +5,14 @@ namespace Aveneo.SearchEngine.Domain.Statistics
 {
     public abstract class StatisticEvent
     {
-        public StatisticEvent(string predicate, Status status, IEnumerable<HttpHeader> headers)
+        public StatisticEvent(string valueToSearch, Status status, IEnumerable<HttpHeader> headers)
         {
-            Predicate = predicate;
+            ValueToSearch = valueToSearch;
             Status = status;
             Headers = headers;
         }
 
-        public string Predicate { get; }
+        public string ValueToSearch { get; }
         public Status Status { get; }
         public IEnumerable<HttpHeader> Headers { get; }
     }

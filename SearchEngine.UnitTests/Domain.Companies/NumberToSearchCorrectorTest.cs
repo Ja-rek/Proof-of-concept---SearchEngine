@@ -10,17 +10,17 @@ namespace Aveneo.SearchEngine.UnitTests.Domain.Companies
         [TestCase("pl123-456-32-18"), TestCase("pl 123-456-32-18"), TestCase("123-456-32-18"), TestCase("1234563218")]
         public void Correct_WhenValueContainAnyNumber_ThenReturnsCorrectNumbers(string value)
         {
-            var numbers = PredicateCorrector.Correct(value);
+            var number = NumberToSearchCorrector.Correct(value);
 
-            Assert.AreEqual(1234563218, numbers);
+            Assert.AreEqual(1234563218, number);
         }
 
         [Test]
         public void Correct_WhenValueNotContainAnyNumber_ThenThrowException()
         {
-            TestDelegate numbers = () => PredicateCorrector.Correct("Any text.");
+            TestDelegate number = () => NumberToSearchCorrector.Correct("Any text.");
 
-            Assert.Throws<ApplicationException>(numbers);
+            Assert.Throws<ApplicationException>(number);
         }
     }
 }

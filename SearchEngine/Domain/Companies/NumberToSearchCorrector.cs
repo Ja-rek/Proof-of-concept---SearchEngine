@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Aveneo.SearchEngine.Domain.Companies
 {
-    public class PredicateCorrector
+    public class NumberToSearchCorrector
     {
         public static long Correct(string predicate)
         {

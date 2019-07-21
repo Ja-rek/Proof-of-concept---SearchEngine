@@ -4,6 +4,6 @@ namespace Aveneo.SearchEngine.Application.Companies
 {
     public interface ICompanyService
     {
-        Maybe<CompanyResult> GetCompanyByPredicate(long id);
+        Maybe<CompanyResult> GetCompanyByPredicateOf(long id);
     }
 }

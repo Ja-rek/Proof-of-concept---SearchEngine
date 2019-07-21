@@ -93,7 +93,7 @@ namespace Aveneo.SearchEngine.FunctionalTests
             }
 
             var count = this.session.QueryOver<CompanyStatisticData>()
-                .Where(x => x.Predicate == number && x.Status == status)
+                .Where(x => x.ValueToSearch == number && x.Status == status)
                 .RowCount();
 
             Assert.NotZero(count);

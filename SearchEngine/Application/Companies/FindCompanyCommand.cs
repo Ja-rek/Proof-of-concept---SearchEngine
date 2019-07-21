@@ -4,13 +4,13 @@ namespace Aveneo.SearchEngine.Application.Companies
 {
     public class FindCompanyCommand
     {
-        public FindCompanyCommand(string filterPredicate, IDictionary<string, string> headers)
+        public FindCompanyCommand(string numberToSearch, IDictionary<string, string> headers)
         {
-            Predicate = filterPredicate;
+            NumberToSearch = numberToSearch;
             Headers = headers;
         }
 
-        public string Predicate { get; }
+        public string NumberToSearch { get; }
         public IDictionary<string, string> Headers { get; }
     }
 }

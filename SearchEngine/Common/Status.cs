@@ -4,6 +4,6 @@ namespace Aveneo.SearchEngine.Common
     {
         Found,
         NotFound,
-        InvalidPredicate
+        InvalidValueToSearch
     }
 }
