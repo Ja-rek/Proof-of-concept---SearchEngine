@@ -27,7 +27,7 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries
                 {
                     var companyData = this.session.QueryOver<CompanyData>()
                         .Where(strategy.WherePredicate(numberToSearch))
-                        .JoinQueryOver(x => x.Address, JoinType.LeftOuterJoin)
+                        .JoinQueryOver(x => x.Address, JoinType.InnerJoin)
                         .SingleOrDefault();
 
                     if (companyData != null)

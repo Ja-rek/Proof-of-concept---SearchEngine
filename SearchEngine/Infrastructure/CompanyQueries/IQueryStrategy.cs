@@ -6,7 +6,7 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries
 {
     public interface IQueryStrategy
     {
-        bool IsCorrectNumber(long predicate);
-        Expression<Func<CompanyData, bool>> WherePredicate(long predicate);
+        bool IsCorrectNumber(long number);
+        Expression<Func<CompanyData, bool>> WherePredicate(long number);
     }
 }

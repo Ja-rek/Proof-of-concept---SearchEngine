@@ -68,7 +68,7 @@ namespace Aveneo.SearchEngine.FunctionalTests
 
         public void And_the_request_has_saved_in_database_with_stauts_invalid_predicate()
         {
-            CheckStatistic(Status.InvalidPredicate, filter: false);
+            CheckStatistic(Status.InvalidValueToSearch, filter: false);
             RemoveStatistic();
         }
 

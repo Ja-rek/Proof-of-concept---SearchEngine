@@ -7,14 +7,14 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries.QueryStrategy
     public class RegonQueryStrategy : IQueryStrategy
     {
 
-        public bool IsCorrectNumber(long predicate)
+        public bool IsCorrectNumber(long number)
         {
-            return Math.Ceiling(Math.Log10(predicate)) == 9;
+            return Math.Ceiling(Math.Log10(number)) == 9;
         }
 
-        public Expression<Func<CompanyData, bool>> WherePredicate(long predicate)
+        public Expression<Func<CompanyData, bool>> WherePredicate(long number)
         {
-            return x => x.Regon == predicate;
+            return x => x.Regon == number;
         }
     }
 }

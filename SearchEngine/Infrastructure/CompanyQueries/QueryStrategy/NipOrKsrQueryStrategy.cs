@@ -6,14 +6,14 @@ namespace Aveneo.SearchEngine.Infrastructure.CompanyQueries.QueryStrategy
 {
     public class NipOrKsrQueryStrategy : IQueryStrategy
     {
-        public bool IsCorrectNumber(long predicate)
+        public bool IsCorrectNumber(long number)
         {
-            return Math.Ceiling(Math.Log10(predicate)) == 10;
+            return Math.Ceiling(Math.Log10(number)) == 10;
         }
 
-        public Expression<Func<CompanyData, bool>> WherePredicate(long predicate)
+        public Expression<Func<CompanyData, bool>> WherePredicate(long number)
         {
-            return x => x.Nip == predicate || x.Ksr == predicate;
+            return x => x.Nip == number || x.Ksr == number;
         }
     }
 }
