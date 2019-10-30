@@ -4,7 +4,7 @@ using LightBDD.NUnit3;
 
 namespace Aveneo.SearchEngine.FunctionalTests
 {
-    [FeatureDescription("As a website user i want to find a company by NIP number.")]
+    [FeatureDescription("As a website user I want to find a company by NIP number.")]
     public class FindCompanyByNip : FeatureFixture
     {
         [Scenario]
